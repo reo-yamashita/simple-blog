@@ -21,6 +21,7 @@
     "gatsby": "^2.28.2",
     "gatsby-cli": "^2.15.1",
     "gatsby-plugin-manifest": "^2.8.0",
+    "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-plugin-mdx": "^1.6.0",
     "gatsby-plugin-offline": "^3.6.0",
     "gatsby-plugin-postcss": "^3.3.0",
