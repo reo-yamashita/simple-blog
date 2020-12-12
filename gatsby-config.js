@@ -13,7 +13,7 @@ module.exports = {
     siteUrl: "https://string.netlify.app/",
     image: `/images/hinata.jpg`,
     social: {
-      github: `nako0215`,
+      github: `NearString`,
       twitter: `honohina0215`,
     },
   },
