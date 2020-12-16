@@ -1,5 +1,7 @@
 ## Simple Gatsby Site
 
+https://simpleblog83784.gtsb.io/
+
 ```
   "scripts": {
     "build": "gatsby build",
