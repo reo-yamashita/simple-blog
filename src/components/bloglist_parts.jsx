@@ -3,15 +3,15 @@ import { Link } from "gatsby"
 
 const BlogList_Parts = ({ node }) => {
   return (
-    <div className="p-2 mx-auto max-w-md sm:max-w-lg">
-      <div className="hover:shadow-md p-4 sm:p-6 rounded-md bg-gray-50 cursor-pointer transition duration-200 min-h-full">
-        <Link to={`/articles${node.fields.slug}`}>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-wide mb-3 border-b-0">
+    <div className="p-2 max-w-lg">
+      <div className="shadow-md hover:shadow-xl p-4 sm:p-6 rounded-md cursor-pointer bg-gray-50">
+        <Link to={`/article${node.fields.slug}`}>
+          <h1 className="text-xl sm:text-2sxl font-bold tracking-wide border-b-0">
             {node.frontmatter.title}
           </h1>
-          <div className="pt-0 max-w-2xl">
+          <div className="max-w-2xl">
             <div className="flex items-center leading-none">
-              <p className="text-sm select-none text-teal-600 pr-3">
+              <p className="text-sm select-none text-gray-500 pr-3">
                 {node.frontmatter.date}
               </p>
             </div>

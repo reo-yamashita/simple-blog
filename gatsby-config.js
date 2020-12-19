@@ -7,9 +7,9 @@ module.exports = {
       author: `にーな`,
       description: `技術メモ的なことを書いていく`,
     },
-    title: `Near`,
+    title: `Near String`,
     description: `my blog built with Gatsby and MDX`,
-    author: `Near`,
+    author: `Near String`,
     siteUrl: "https://string.netlify.app/",
     image: `/images/hinata.jpg`,
     social: {
@@ -22,8 +22,6 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-postcss`,
-    `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -72,6 +70,21 @@ module.exports = {
           },
         ],
         plugins: [`gatsby-remark-images`],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-postcss",
+      options: {
+        postCssPlugins: [require("tailwindcss")("./tailwind.config.js")],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true, // Print removed selectors and processed file names
+        //  develop: true, // Enable while using `gatsby develop`
+        tailwind: true, // Enable tailwindcss support
+        // whitelist: ['whitelist'], // Don't remove this selector
       },
     },
   ],

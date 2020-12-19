@@ -1,5 +1,6 @@
 const path = require("path")
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { paginate } = require("gatsby-awesome-pagination")
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -16,7 +17,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogTemplate = path.resolve("./src/templates/article.js")
+  const blogTemplate = path.resolve("./src/templates/article.jsx")
+  const PaginationTemplate = path.resolve("./src/templates/articleList.jsx")
   //const tagsTemplate = path.resolve("./src/templates/tags.tsx")
 
   return await graphql(`
@@ -24,19 +26,11 @@ exports.createPages = async ({ graphql, actions }) => {
       allPosts: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
         edges {
           previous {
-            frontmatter {
-              title
-              date(formatString: "MMMM DD, YYYY")
-            }
             fields {
               slug
             }
           }
           next {
-            frontmatter {
-              title
-              date(formatString: "MMMM DD, YYYY")
-            }
             fields {
               slug
             }
@@ -54,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `).then(res => {
+  `).then((res) => {
     // tag は必ず、category の上位集合として定義してください.
     // res.data.groups.group.forEach(( group_item ) => {
     //   createPage({
@@ -69,13 +63,22 @@ exports.createPages = async ({ graphql, actions }) => {
     res.data.allPosts.edges.forEach(({ node, previous, next }) => {
       createPage({
         component: blogTemplate,
-        path: `/articles${node.fields.slug}`,
+        path: `/article${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
           previous,
           next,
         },
       })
+    })
+
+    paginate({
+      createPage,
+      items: res.data.allPosts.edges,
+      component: PaginationTemplate,
+      pathPrefix: "/article",
+      itemsPerPage: 2,
+      itemsPerFirstPage: 3,
     })
   })
 }

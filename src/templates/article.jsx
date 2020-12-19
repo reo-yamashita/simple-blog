@@ -5,7 +5,7 @@ import Layout from "@layouts/main_layout"
 import Seo from "@components/Seo"
 
 export const query = graphql`
-  query Article($slug: String!) {
+  query($slug: String!) {
     post: mdx(fields: { slug: { eq: $slug } }) {
       fields {
         slug
@@ -25,16 +25,14 @@ const Blog = ({ data, pageContext }) => {
   return (
     <Layout>
       <Seo title={"blog"} description={"article"} author={"Near String"} />
-      <div className="px-4 py-12 flex-1 md:px-12">
-        <h2 className="select-none inline-block text-2xl sm:text-3xl font-bold tracking-wide border-b-0">
+      <div className="px-4 py-12 flex-1">
+        <h2 className="select-none text-2xl md:text-3xl font-bold tracking-wide">
           {data.post.frontmatter.title}
         </h2>
-        <div className="flex items-center leading-none">
-          <p className="text-sm select-none text-gray-800 opacity-75s pt-1 pl-3">
-            posted on {data.post.frontmatter.date}
-          </p>
-        </div>
-        <div className="p-3 text-sm sm:text-base text-black">
+        <p className="text-sm select-none text-gray-800 opacity-75s pt-1 ml-3">
+          posted on {data.post.frontmatter.date}
+        </p>
+        <div className="p-3 text-sm sm:text-base text-gray-800">
           <MDXRenderer>{data.post.body}</MDXRenderer>
         </div>
         {/* <PageMove  arrow={page_arrow}/> */}

@@ -1,5 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+h1, h2, h3 {
+  border-bottom: none;
+}
+
 a { 
   text-decoration: none;
+  
   &:hover {
     text-decoration: none;
   }
@@ -7,4 +22,79 @@ a {
 
 li { 
   list-style: none;
+}
+
+img {
+  margin-bottom: 0;
+}
+
+.gatsby-highlight pre[class="language-css"]::before {
+  content: "css";
+  background: rgb(206, 245, 162);
+}
+
+.gatsby-highlight pre[class="language-jsx"]::before {
+  content: "jsx";
+  background: rgb(97, 218, 251);
+}
+
+.gatsby-highlight pre[class="language-js"]::before {
+  content: "js";
+  background: rgb(204, 213, 255);
+}
+.gatsby-highlight pre[class*="language-shell"]::before {
+  content: "shell";
+  background: #d2d1d3ab;
+}
+.gatsby-highlight pre[class="language-graphql"]::before {
+  content: "graphQL";
+  background: rgb(230, 99, 149);
+  color: white;
+}
+.gatsby-highlight pre[class="language-bash"]::before {
+  content: "bash";
+  background: #d2d1d3ab;
+}
+.gatsby-highlight pre[class="language-html"]::before {
+  content: "html";
+  background: #baf1ffab;
+}
+.gatsby-highlight pre[class="language-svelte"]::before {
+  content: "svelte";
+  color: white;
+  background: #ff4a2aab;
+}
+
+.gatsby-highlight pre[class*="language-"]::before {
+  text-transform: uppercase;
+  letter-spacing: .025rem;
+  font-size: .8rem;
+  font-weight: lighter;
+  position: absolute;
+  left: 2rem;
+  border-radius: 0 0 4px 4px;
+  padding: 0 .6rem;
+  font-family: 'Noto Sans JP';
+}
+
+
+code {
+  font-family: 'Fira Mono', monospace;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+}
+
+.code-surface-spread {
+  margin-left: -1.6rem;
+  margin-right: -1.6rem;
+}
+
+.highlight-line {
+  background-color: rgba(248, 223, 225, 0.589);
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.5rem;
+  display: block;
+  border-left: 0.3em solid rgb(247, 114, 114);
 }
