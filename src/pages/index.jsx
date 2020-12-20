@@ -1,32 +1,8 @@
 import React from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
 import MainLayout from "@layouts/main_layout"
-import BlogListParts from "@components/bloglist_parts"
 import Seo from "@components/Seo"
 
 export default function Home() {
-  const data = useStaticQuery(graphql`
-    query AllPosts {
-      allPosts: allMdx(
-        sort: { fields: frontmatter___date, order: DESC }
-        limit: 3
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              date(formatString: "MMMM Do, YYYY")
-              learning_Point
-              tags
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
 
   return (
     <MainLayout>
@@ -62,7 +38,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* <section className="p-2 flex mt-12">
         <div className="py-2 px-12 w-2/4">
           <p>Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app.

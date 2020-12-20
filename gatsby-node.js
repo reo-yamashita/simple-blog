@@ -72,13 +72,16 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
 
+    const pathPrefix = "/article"
     paginate({
       createPage,
       items: res.data.allPosts.edges,
       component: PaginationTemplate,
-      pathPrefix: "/article",
-      itemsPerPage: 2,
-      itemsPerFirstPage: 3,
+      pathPrefix,
+      itemsPerPage: 5,
+      context: {
+        pathPrefix,
+      }
     })
   })
 }

@@ -21,8 +21,16 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
     },
-    extend: {},
+    extend: {
+      zIndex: {
+        '-10': '-10',
+      }
+    },
   },
-  variants: {},
+  variants: {
+    extend: {
+      backgroundColor: ['active'],
+    }
+  },
   plugins: [],
 }

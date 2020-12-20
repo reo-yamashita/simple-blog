@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "gatsby"
 import { MDXProvider } from '@mdx-js/react'
 import Code from '@components/code'
+import { LoremIpsum } from "react-lorem-ipsum";
 
 const BasicComponents = {
   pre: ({ children }) => {
@@ -27,6 +28,14 @@ const BasicComponents = {
     <ol style={{ marginLeft: '1.5rem' }} {...props} />,
   li: (props) =>
     <li style={{ marginBottom: 'calc(1.5rem / 2)' }} {...props} />,
+  lorem: (flag) =>
+    <div>{<LoremIpsum
+      p={9}
+      avgWordsPerSentence={11}
+      avgSentencesPerParagraph={9}
+      startWithLoremIpsum="false"
+    />}
+    </div>
 }
 
 const OtherComponents = {

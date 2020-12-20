@@ -22,10 +22,21 @@ a {
 
 li { 
   list-style: none;
+  margin-bottom: 0;
 }
 
 img {
   margin-bottom: 0;
+}
+
+.pagination_box  {
+  min-width: 32px;
+  height: 32px;
+}
+
+
+.pagination_active_style {
+  background-color: #ececec;  
 }
 
 .gatsby-highlight pre[class="language-css"]::before {

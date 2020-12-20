@@ -13,7 +13,6 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM Do, YYYY")
-        learning_Point
       }
       body
     }
