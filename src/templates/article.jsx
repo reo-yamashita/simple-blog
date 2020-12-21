@@ -24,7 +24,7 @@ const Blog = ({ data, pageContext }) => {
   return (
     <Layout>
       <Seo title={"blog"} description={"article"} author={"Near String"} />
-      <div className="px-4 py-12 flex-1">
+      <div className="px-4 py-12 flex-1 sm:max-w-3xl mx-auto">
         <h2 className="select-none text-2xl md:text-3xl font-bold tracking-wide">
           {data.post.frontmatter.title}
         </h2>

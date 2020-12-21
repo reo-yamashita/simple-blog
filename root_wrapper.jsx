@@ -33,7 +33,7 @@ const BasicComponents = {
       p={9}
       avgWordsPerSentence={11}
       avgSentencesPerParagraph={9}
-      startWithLoremIpsum="false"
+      startWithLoremIpsum={false}
     />}
     </div>
 }
