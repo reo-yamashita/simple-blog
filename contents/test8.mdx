@@ -1,11 +1,11 @@
 ---
 title: test8
-subtitle: 
+subtitle:
 date: 2020-05-11
-description: 
-img: 
-tags: ['gatsby']
-category: 'gatsby'
+description:
+img:
+tags: ["gatsby"]
+category: "gatsby"
 ---
 
 <lorem />
@@ -13,9 +13,11 @@ category: 'gatsby'
 ```js title=gatsby-config.js light=true
 <div className="gatsby-title">
   {title && (
-   <div className="px-5 py-3 leading-none bg-gray-100 rounded-md border-b border-gray-200">
-     <p className="text-indigo-900 text-sm px-3 select-none leading-none">{title}</p>
-   </div>
+    <div className="px-5 py-3 leading-none bg-gray-100 rounded-md border-b border-gray-200">
+      <p className="text-indigo-900 text-sm px-3 select-none leading-none">
+        {title}
+      </p>
+    </div>
   )}
 </div>
 ```

@@ -27,7 +27,8 @@ export const query = graphql`
   }
 `
 
-const range = (start, stop) => Array.from({ length: (stop - start) + 1 }, (_, i) => start + i);
+const range = (start, stop) =>
+  Array.from({ length: stop - start + 1 }, (_, i) => start + i)
 
 const Pagination = ({ data, pageContext }) => {
   const Posts = data.allPosts.edges
@@ -42,9 +43,15 @@ const Pagination = ({ data, pageContext }) => {
         <ul className="flex items-center space-x-3 relative select-none my-4">
           {PageList.map((page, index) => {
             return (
-              <li className={` rounded-md text-sm transition-colors`} key={index}>
-                <Link to={`${pathPrefix}${page === 1 ? '' : '/' + page}`} activeClassName="pagination_active_style"
-                  className="px-1 justify-center inline-flex items-center border border-gray-400 border-opacity-70 rounded-md  pagination_box hover:bg-gray-100">
+              <li
+                className={` rounded-md text-sm transition-colors`}
+                key={index}
+              >
+                <Link
+                  to={`${pathPrefix}${page === 1 ? "" : "/" + page}`}
+                  activeClassName="pagination_active_style"
+                  className="px-1 justify-center inline-flex items-center border border-gray-400 border-opacity-70 rounded-md  pagination_box hover:bg-gray-100"
+                >
                   <span className="text-gray-800">{page}</span>
                 </Link>
               </li>

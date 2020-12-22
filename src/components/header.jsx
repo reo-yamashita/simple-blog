@@ -1,14 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
-import Social from '@components/Social'
+import Social from "@components/Social"
 
 const Header = (siteMetadata) => {
-
   const header_list = [
-    { name: 'Home', link: '/' },
+    { name: "Home", link: "/" },
     // { name: 'Profile', link: '/profile' },
     // { name: 'Works', link: '/works' },
-    { name: 'Article', link: '/article' },
+    { name: "Article", link: "/article" },
   ]
 
   return (
@@ -17,7 +16,9 @@ const Header = (siteMetadata) => {
         <nav className="flex text-sm md:text-lg py-3 flex-1">
           {header_list.map((item, index) => {
             return (
-              <Link to={`${item.link}`} key={index} className="px-4">{item.name}</Link>
+              <Link to={`${item.link}`} key={index} className="px-4">
+                {item.name}
+              </Link>
             )
           })}
         </nav>

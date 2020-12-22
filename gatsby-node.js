@@ -81,7 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
       itemsPerPage: 5,
       context: {
         pathPrefix,
-      }
+      },
     })
   })
 }

@@ -1,8 +1,7 @@
 import React from "react"
-import Social from '@components/Social'
+import Social from "@components/Social"
 
 const Footer = (siteMetadata) => {
-
   return (
     <div className="pt-8 mx-auto max-w-4xl pb-1">
       <div className="flex justify-center">

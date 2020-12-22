@@ -23,14 +23,14 @@ module.exports = {
     },
     extend: {
       zIndex: {
-        '-10': '-10',
-      }
+        "-10": "-10",
+      },
     },
   },
   variants: {
     extend: {
-      backgroundColor: ['active'],
-    }
+      backgroundColor: ["active"],
+    },
   },
   plugins: [],
 }

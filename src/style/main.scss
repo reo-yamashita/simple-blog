@@ -2,25 +2,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   border-bottom: none;
 }
 
-a { 
+a {
   text-decoration: none;
-  
+
   &:hover {
     text-decoration: none;
   }
 }
 
-li { 
+li {
   list-style: none;
   margin-bottom: 0;
 }
@@ -29,14 +31,13 @@ img {
   margin-bottom: 0;
 }
 
-.pagination_box  {
+.pagination_box {
   min-width: 32px;
   height: 32px;
 }
 
-
 .pagination_active_style {
-  background-color: #ececec;  
+  background-color: #ececec;
 }
 
 .gatsby-highlight pre[class="language-css"]::before {
@@ -78,19 +79,18 @@ img {
 
 .gatsby-highlight pre[class*="language-"]::before {
   text-transform: uppercase;
-  letter-spacing: .025rem;
-  font-size: .8rem;
+  letter-spacing: 0.025rem;
+  font-size: 0.8rem;
   font-weight: lighter;
   position: absolute;
   left: 2rem;
   border-radius: 0 0 4px 4px;
-  padding: 0 .6rem;
-  font-family: 'Noto Sans JP';
+  padding: 0 0.6rem;
+  font-family: "Noto Sans JP";
 }
 
-
 code {
-  font-family: 'Fira Mono', monospace;
+  font-family: "Fira Mono", monospace;
   margin-left: 0.3rem;
   margin-right: 0.3rem;
 }

@@ -3,7 +3,6 @@ import MainLayout from "@layouts/main_layout"
 import Seo from "@components/Seo"
 
 export default function Home() {
-
   return (
     <MainLayout>
       <Seo />
@@ -52,7 +51,6 @@ export default function Home() {
           <p> npm run dev</p>
         </div>
       </section> */}
-
     </MainLayout>
   )
 }

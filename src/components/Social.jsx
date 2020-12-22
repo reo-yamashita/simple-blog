@@ -1,9 +1,8 @@
 import React from "react"
 //import 'remixicon/fonts/remixicon.css'
-import GitHubIcon from '@material-ui/icons/GitHub';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import GitHubIcon from "@material-ui/icons/GitHub"
+import TwitterIcon from "@material-ui/icons/Twitter"
 const Social = (siteMetadata) => {
-
   return (
     <div className="flex items-center space-x-4 px-3">
       <div className="opacity-70 hover:">

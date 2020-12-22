@@ -12,7 +12,7 @@ const BlogList_Parts = ({ node }) => {
           {node.frontmatter.title}
         </h1>
       </Link>
-    </div >
+    </div>
   )
 }
 
