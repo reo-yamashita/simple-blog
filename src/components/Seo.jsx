@@ -81,7 +81,9 @@ const Seo = ({ description, title, author, image, keywords }) => {
                 }
                 : []
             )}
-          />
+          >
+            <html lang="en" />
+          </Helmet>
         )
       }}
     />

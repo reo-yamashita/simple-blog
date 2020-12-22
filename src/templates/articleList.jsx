@@ -51,6 +51,7 @@ const Pagination = ({ data, pageContext }) => {
                   to={`${pathPrefix}${page === 1 ? "" : "/" + page}`}
                   activeClassName="pagination_active_style"
                   className="px-1 justify-center inline-flex items-center border border-gray-400 border-opacity-70 rounded-md  pagination_box hover:bg-gray-100"
+                  aria-label="PageList"
                 >
                   <span className="text-gray-800">{page}</span>
                 </Link>

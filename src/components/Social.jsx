@@ -11,6 +11,7 @@ const Social = (siteMetadata) => {
             href={`https://twitter.com/${siteMetadata.social.twitter}`}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Twitter"
           >
             <TwitterIcon />
           </a>
@@ -22,6 +23,7 @@ const Social = (siteMetadata) => {
             href={`https://github.com/${siteMetadata.social.github}`}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
           >
             <GitHubIcon />
           </a>
