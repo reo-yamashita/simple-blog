@@ -1,20 +1,18 @@
 const path = require("path")
 
 module.exports = {
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true,
+  },
   siteMetadata: {
     year: `2020`,
-    near: {
-      author: `にーな`,
-      description: `技術メモ的なことを書いていく`,
-    },
-    title: `Near String`,
-    description: `my blog built with Gatsby and MDX`,
+    description: `Gatsby blog built with Gatsby and MDX`,
     author: `Near String`,
     siteUrl: "https://string.netlify.app/",
-    image: `/images/hinata.jpg`,
+    image: `near_string.png`,
     social: {
       github: `NearString`,
-      twitter: `honohina0215`,
+      twitter: `nina0215nina`,
     },
   },
   plugins: [
@@ -31,11 +29,12 @@ module.exports = {
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: `static/images/logo1.png`,
+        icon: `static/near_string_.png`,
       },
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -81,9 +80,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
-        printRejected: true, // Print removed selectors and processed file names
-        //  develop: true, // Enable while using `gatsby develop`
         tailwind: true, // Enable tailwindcss support
+        //  develop: true, // Enable while using `gatsby develop`
         // whitelist: ['whitelist'], // Don't remove this selector
       },
     },

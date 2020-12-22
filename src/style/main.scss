@@ -31,6 +31,7 @@ img {
   margin-bottom: 0;
 }
 
+// <-- Pagination Style
 .pagination_box {
   min-width: 32px;
   height: 32px;
@@ -39,17 +40,17 @@ img {
 .pagination_active_style {
   background-color: #ececec;
 }
+// --> Pagination Style
 
+// <-- MDX code style
 .gatsby-highlight pre[class="language-css"]::before {
   content: "css";
   background: rgb(206, 245, 162);
 }
-
 .gatsby-highlight pre[class="language-jsx"]::before {
   content: "jsx";
   background: rgb(97, 218, 251);
 }
-
 .gatsby-highlight pre[class="language-js"]::before {
   content: "js";
   background: rgb(204, 213, 255);
@@ -109,3 +110,4 @@ code {
   display: block;
   border-left: 0.3em solid rgb(247, 114, 114);
 }
+// --> MDX code style

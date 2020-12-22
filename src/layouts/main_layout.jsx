@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Footer from "@components/footer"
-import Header from "@components/header"
+//import Footer from "@/components/core/footer"
+import Header from "@/components/core/header"
 
 const MainLayout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -9,11 +9,6 @@ const MainLayout = ({ children }) => {
       site {
         siteMetadata {
           year
-          near {
-            author
-            description
-          }
-          title
           description
           author
           social {

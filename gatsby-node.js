@@ -17,8 +17,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogTemplate = path.resolve("./src/templates/article.jsx")
-  const PaginationTemplate = path.resolve("./src/templates/articleList.jsx")
+  const BlogTemplate = path.resolve("./src/templates/article.jsx")
+  const ArticleListTemplate = path.resolve("./src/templates/articleList.jsx")
   //const tagsTemplate = path.resolve("./src/templates/tags.tsx")
 
   return await graphql(`
@@ -62,7 +62,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     res.data.allPosts.edges.forEach(({ node, previous, next }) => {
       createPage({
-        component: blogTemplate,
+        component: BlogTemplate,
         path: `/article${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
@@ -76,7 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
     paginate({
       createPage,
       items: res.data.allPosts.edges,
-      component: PaginationTemplate,
+      component: ArticleListTemplate,
       pathPrefix,
       itemsPerPage: 5,
       context: {

@@ -7,7 +7,6 @@ const Seo = ({ description, title, author, image, keywords }) => {
     query seo {
       site {
         siteMetadata {
-          title
           description
           author
           siteUrl
@@ -24,9 +23,8 @@ const Seo = ({ description, title, author, image, keywords }) => {
     <StaticQuery
       query={detailsQuery}
       render={(data) => {
-        const metaDescription =
-          description || data.site.siteMetadata.description
-        const metaTitle = title || data.site.siteMetadata.title
+        const metaDescription = description || data.site.siteMetadata.description
+        const metaTitle = title || data.site.siteMetadata.author
         const metaAuthor = author || data.site.siteMetadata.author
         const metaUrl = author || data.site.siteMetadata.siteUrl
         const metaImage = image || data.site.siteMetadata.image
@@ -78,9 +76,9 @@ const Seo = ({ description, title, author, image, keywords }) => {
             ].concat(
               metaKeywords && metaKeywords.length > 0
                 ? {
-                    name: `Keywords`,
-                    content: metaKeywords.join(`, `),
-                  }
+                  name: `Keywords`,
+                  content: metaKeywords.join(`, `),
+                }
                 : []
             )}
           />
