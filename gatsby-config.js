@@ -8,7 +8,7 @@ module.exports = {
     year: `2021`,
     description: `Gatsby blog built with Gatsby and MDX and Tailwindcss`,
     author: `Near Closer`,
-    siteUrl: "https://string.netlify.app/",
+    siteUrl: "https://near_closer0215.netlify.app/",
     image: `near_closer.png`,
     social: {
       github: `NearCloser`,
