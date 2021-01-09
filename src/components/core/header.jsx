@@ -16,7 +16,12 @@ const Header = (siteMetadata) => {
         <nav className="flex text-sm md:text-lg py-3 flex-1">
           {header_list.map((item, index) => {
             return (
-              <Link to={`${item.link}`} key={index} className="px-4" aria-label="header_item">
+              <Link
+                to={`${item.link}`}
+                key={index}
+                className="px-4"
+                aria-label="header_item"
+              >
                 {item.name}
               </Link>
             )

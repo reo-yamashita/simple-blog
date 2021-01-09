@@ -8,7 +8,7 @@ export default function Home() {
       <Seo />
       <section className="px-4 pt-32 pb-20 md:pb-28 max-w-md mx-auto">
         <h1 className="font-bold tracking-wide text-6xl text-center">
-          Near String
+          Near Closer
         </h1>
       </section>
 
