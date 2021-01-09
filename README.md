@@ -1,6 +1,6 @@
-## Simple Gatsby Site
+## Gatsby blog built with Gatsby and MDX and Tailwindcss
 
-https://simpleblog83784.gtsb.io/
+https://near_closer0215.netlify.app
 
 ```
   "scripts": {
