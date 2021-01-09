@@ -1,6 +1,6 @@
 ## Gatsby blog built with Gatsby and MDX and Tailwindcss
 
-https://near_closer0215.netlify.app
+https://near-closer0215.netlify.app/
 
 ```
   "scripts": {
