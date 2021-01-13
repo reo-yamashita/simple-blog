@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 const BlogList_Parts = ({ node }) => {
   return (
-    <div className="p-4 max-w-md">
+    <div className="hover:bg-lightblue-50 dark:hover:bg-gray-700 p-4 dark-transition">
       <p className="text-sm select-none text-gray-400 pr-3">
         {node.frontmatter.date}
       </p>
@@ -12,9 +12,12 @@ const BlogList_Parts = ({ node }) => {
         className="cursor-pointer"
         aria-label="Article"
       >
-        <h1 className="text-xl sm:text-3xl tracking-wide text-gray-600 inline-block hover:text-gray-500 transition-colors">
+        <h1 className="tracking-wide font-medium text-xl text-gray-700 dark:text-gray-100 dark-transition prose-lg">
           {node.frontmatter.title}
         </h1>
+        <p className="text-base text-accent prose-xl">
+          {node.frontmatter.description}
+        </p>
       </Link>
     </div>
   )

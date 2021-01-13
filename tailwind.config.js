@@ -2,28 +2,47 @@ const colors = require("tailwindcss/colors")
 
 module.exports = {
   purge: false,
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
-    colors: {
-      // Build your palette here
-      gray: colors.coolGray,
-      red: colors.red,
-      yellow: colors.amber,
-      orange: colors.orange,
-      emerald: colors.emerald,
-      teal: colors.teal,
-      cyan: colors.cyan,
-      lightblue: colors.lightBlue,
-      blue: colors.blue,
-      indigo: colors.indigo,
-      violet: colors.violet,
-      purple: colors.purple,
-      pink: colors.pink,
-      rose: colors.rose,
-    },
     extend: {
+      colors: {
+        warmgray: colors.warmGray,
+        bluegray: colors.blueGray,
+        green: colors.green,
+        emerald: colors.emerald,
+        teal: colors.teal,
+        lightblue: colors.lightBlue,
+        rose: colors.rose,
+      },
+      fontFamily: {
+        sans: [
+          "Inter",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
+      },
+      backgroundColor: {
+        primary: "var(--color-bg-primary)",
+        secondary: "var(--color-bg-secondary)",
+        accent: "var(--color-bg-accent)",
+      },
+      textColor: {
+        accent: "var(--color-text-accent)",
+        primary: "var(--color-text-primary)",
+        secondary: "var(--color-text-secondary)",
+      },
       zIndex: {
         "-10": "-10",
+        "-20": "-20",
       },
     },
   },
@@ -32,5 +51,5 @@ module.exports = {
       backgroundColor: ["active"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 }

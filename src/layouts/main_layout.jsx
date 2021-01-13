@@ -23,11 +23,13 @@ const MainLayout = ({ children }) => {
   const { siteMetadata } = data.site
 
   return (
-    <>
-      <Header {...siteMetadata} />
-      <div className="mx-auto max-w-7xl">{children}</div>
+    <div className="dark-transition bg-primary">
+      <Header {...siteMetadata} className="z-50" />
+      <main className="md:max-w-screen-xl  px-4 md:px-8 mx-auto">
+        {children}
+      </main>
       {/* <Footer {...siteMetadata} /> */}
-    </>
+    </div>
   )
 }
 

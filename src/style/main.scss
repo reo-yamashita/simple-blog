@@ -8,30 +8,7 @@
   }
 }
 
-h1,
-h2,
-h3 {
-  border-bottom: none;
-}
-
-a {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-li {
-  list-style: none;
-  margin-bottom: 0;
-}
-
-img {
-  margin-bottom: 0;
-}
-
-// <-- Pagination Style
+// Pagination Style
 .pagination_box {
   min-width: 32px;
   height: 32px;
@@ -40,9 +17,8 @@ img {
 .pagination_active_style {
   background-color: #ececec !important;
 }
-// --> Pagination Style
 
-// <-- MDX code style
+//  MDX code style
 .gatsby-highlight pre[class="language-css"]::before {
   content: "css";
   background: rgb(206, 245, 162);
@@ -110,4 +86,3 @@ code {
   display: block;
   border-left: 0.3em solid rgb(247, 114, 114);
 }
-// --> MDX code style

@@ -1,19 +1,23 @@
 import React from "react"
 import { Link } from "gatsby"
-import Social from "@components/Social"
+import { useDispatch, useSelector } from "react-redux"
 
-const Header = (siteMetadata) => {
+import Brightness2Icon from "@material-ui/icons/Brightness2"
+import { themeColorToggle } from "@/store/themeRed"
+
+const Header = () => {
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state.themeReducer.themeColor)
+
   const header_list = [
     { name: "Home", link: "/" },
-    // { name: 'Profile', link: '/profile' },
-    // { name: 'Works', link: '/works' },
     { name: "Article", link: "/article" },
   ]
 
   return (
-    <div className="shadow-sm">
-      <div className="mx-auto md:max-w-5xl max-w-xl flex items-center px-8">
-        <nav className="flex text-sm md:text-lg py-3 flex-1">
+    <header className="mx-auto max-w-screen-md md:max-w-screen-xl px-10 md:px-24">
+      <div className="flex items-center pt-16 pb-8">
+        <nav className="flex items-center flex-grow">
           {header_list.map((item, index) => {
             return (
               <Link
@@ -22,16 +26,26 @@ const Header = (siteMetadata) => {
                 className="px-4"
                 aria-label="header_item"
               >
-                {item.name}
+                <p className="font-normal text-base text-secondary  dark-transition">
+                  {item.name}
+                </p>
               </Link>
             )
           })}
         </nav>
-        <div className="py-3">
-          <Social {...siteMetadata} />
+        <div
+          className={`cursor-pointer transition-colors ${
+            state === "light" ? "text-gray-500" : "text-blue-200"
+          }`}
+          aria-hidden="true"
+          onClick={() => {
+            dispatch(themeColorToggle(state === "light" ? "dark" : "light"))
+          }}
+        >
+          <Brightness2Icon />
         </div>
       </div>
-    </div>
+    </header>
   )
 }
 

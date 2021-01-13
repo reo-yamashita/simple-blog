@@ -1,9 +1,6 @@
 const path = require("path")
 
 module.exports = {
-  flags: {
-    PRESERVE_WEBPACK_CACHE: true,
-  },
   siteMetadata: {
     year: `2021`,
     description: `Gatsby blog built with Gatsby and MDX and Tailwindcss`,
@@ -36,12 +33,6 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `utils/typography`,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: "contents",
@@ -71,12 +62,7 @@ module.exports = {
         plugins: [`gatsby-remark-images`],
       },
     },
-    {
-      resolve: "gatsby-plugin-postcss",
-      options: {
-        postCssPlugins: [require("tailwindcss")("./tailwind.config.js")],
-      },
-    },
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {

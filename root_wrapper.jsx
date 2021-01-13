@@ -1,6 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
+import { Provider } from "react-redux"
+//import { PersistGate } from "redux-persist/integration/react"
+import {
+  // persistor,
+  store,
+} from "@/store/createStore"
 import Code from "@components/code"
 import { LoremIpsum } from "react-lorem-ipsum"
 
@@ -24,7 +30,7 @@ const BasicComponents = {
   ul: (props) => <ul style={{ marginLeft: " 1.5rem" }} {...props} />,
   ol: (props) => <ol style={{ marginLeft: "1.5rem" }} {...props} />,
   li: (props) => <li style={{ marginBottom: "calc(1.5rem / 2)" }} {...props} />,
-  lorem: (flag) => (
+  lorem: () => (
     <div>
       {
         <LoremIpsum
@@ -44,9 +50,13 @@ const OtherComponents = {
 
 const Root = ({ element }) => {
   return (
-    <MDXProvider components={{ ...OtherComponents, ...BasicComponents }}>
-      {element}
-    </MDXProvider>
+    <Provider store={store}>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+      <MDXProvider components={{ ...OtherComponents, ...BasicComponents }}>
+        {element}
+      </MDXProvider>
+      {/* </PersistGate> */}
+    </Provider>
   )
 }
 
