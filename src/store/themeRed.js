@@ -3,15 +3,14 @@ const getInitialTheme = () => {
     const userMedia = window.matchMedia("(prefers-color-scheme: dark)")
 
     if (userMedia.matches) {
-      return "dark" //"dark"
+      return ["dark", "light"]
     }
   }
-  return "light" //"light"
+  return ["light", "dark"]
 }
 
 const initialState = { themeColor: getInitialTheme() }
 
-console.log(initialState)
 export const themeReducer = (state = initialState, action) => {
   if (action.type === "TOGGLE_THEMECOLOR") {
     return {
@@ -24,10 +23,9 @@ export const themeReducer = (state = initialState, action) => {
 
 export const themeColorToggle = (theme) => {
   const root = window.document.documentElement
-  const isDark = theme === "dark"
 
-  root.classList.remove(isDark ? "light" : "dark")
-  root.classList.add(theme)
+  root.classList.remove(theme[1])
+  root.classList.add(theme[0])
 
   return {
     type: "TOGGLE_THEMECOLOR",

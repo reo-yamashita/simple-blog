@@ -13,9 +13,11 @@ export const query = graphql`
     ) {
       edges {
         node {
+          timeToRead
           frontmatter {
             title
-            date(formatString: "MMMM Do, YYYY")
+            date(formatString: "MMMM Do YYYY")
+            description
             tags
           }
           fields {
@@ -39,34 +41,36 @@ const Pagination = ({ data, pageContext }) => {
   return (
     <MainLayout>
       <Seo title={"Blog"} description={"article list"} author={"Near String"} />
-      <section className="max-w-3xl mx-auto pt-8">
-        <ul className="flex items-center space-x-3 relative select-none my-4">
-          {PageList.map((page, index) => {
-            return (
-              <li
-                className={` rounded-md text-sm transition-colors`}
-                key={index}
-              >
-                <Link
-                  to={`${pathPrefix}${page === 1 ? "" : "/" + page}`}
-                  activeClassName="pagination_active_style"
-                  className="px-1 justify-center inline-flex items-center border border-gray-400 border-opacity-70 rounded-md  pagination_box hover:bg-gray-100"
-                  aria-label="PageList"
+      <section className="pt-16 pb-8 md:pb-28">
+        <div className="max-w-4xl mx-auto">
+          <ul className="flex items-center space-x-3 relative select-none my-4">
+            {PageList.map((page, index) => {
+              return (
+                <li
+                  className={` rounded-md text-sm transition-colors`}
+                  key={index}
                 >
-                  <span className="text-gray-800">{page}</span>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-        <div className="max-w-3xl px-3 space-y-8">
-          {Posts.map(({ node }, index) => {
-            return (
-              <React.Fragment key={index}>
-                <BlogListParts node={node} />
-              </React.Fragment>
-            )
-          })}
+                  <Link
+                    to={`${pathPrefix}${page === 1 ? "" : "/" + page}`}
+                    activeClassName="opacity-60"
+                    className="px-1 justify-center inline-flex items-center border border-gray-500 border-opacity-70 rounded-md  pagination_box dark:hover:bg-bg-accent"
+                    aria-label="PageList"
+                  >
+                    <span className="text-primary">{page}</span>
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+          <div className="max-w-3xl px-3 space-y-8 mt-8">
+            {Posts.map(({ node }, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <BlogListParts node={node} />
+                </React.Fragment>
+              )
+            })}
+          </div>
         </div>
       </section>
     </MainLayout>

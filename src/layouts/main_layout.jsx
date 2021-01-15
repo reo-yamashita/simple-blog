@@ -24,8 +24,8 @@ const MainLayout = ({ children }) => {
 
   return (
     <div className="dark-transition bg-primary">
-      <Header {...siteMetadata} className="z-50" />
-      <main className="md:max-w-screen-xl  px-4 md:px-8 mx-auto">
+      <Header {...siteMetadata} />
+      <main className="md:max-w-screen-xl px-4 md:px-8 mx-auto">
         {children}
       </main>
       {/* <Footer {...siteMetadata} /> */}

@@ -3,19 +3,20 @@ import { Link } from "gatsby"
 
 const BlogList_Parts = ({ node }) => {
   return (
-    <div className="hover:bg-lightblue-50 dark:hover:bg-gray-700 p-4 dark-transition">
-      <p className="text-sm select-none text-gray-400 pr-3">
+    <div className="hover:bg-bluegray-100 dark:hover:bg-gray-700 p-4 dark-transition">
+      <p className="text-sm select-none text-article opacity-70 tracking-wide">
         {node.frontmatter.date}
+        {node.timeToRead > 0 && ` - ${node.timeToRead} minutes read`}
       </p>
       <Link
         to={`/article${node.fields.slug}`}
-        className="cursor-pointer"
+        className="cursor-pointe opacity-80"
         aria-label="Article"
       >
-        <h1 className="tracking-wide font-medium text-xl text-gray-700 dark:text-gray-100 dark-transition prose-lg">
+        <h1 className="tracking-wide font-bold dark-transition opacity-80 text-2xl">
           {node.frontmatter.title}
         </h1>
-        <p className="text-base text-accent prose-xl">
+        <p className="text-base opacity-80 text-little mt-1">
           {node.frontmatter.description}
         </p>
       </Link>

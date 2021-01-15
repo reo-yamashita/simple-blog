@@ -1,42 +1,49 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Layout from "@layouts/main_layout"
 import Seo from "@components/Seo"
+import TableContents from "@components/contentsList"
+import ArticleLayout from "@layouts/article_layout"
 
 export const query = graphql`
   query($slug: String!) {
-    post: mdx(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       fields {
         slug
       }
       frontmatter {
         title
-        date(formatString: "MMMM Do, YYYY")
+        date(formatString: "MMMM Do YYYY")
       }
       body
+      tableOfContents
+      timeToRead
     }
   }
 `
 
-const Blog = ({ data, pageContext }) => {
-  // const page_arrow = pageContext
+const Blog = ({ data: { mdx }, pageContext }) => {
   return (
-    <Layout>
+    <ArticleLayout>
       <Seo title={"blog"} description={"article"} author={"Near String"} />
-      <div className="px-4 py-12 flex-1 sm:max-w-3xl mx-auto">
-        <h2 className="select-none text-2xl md:text-3xl font-bold tracking-wide">
-          {data.post.frontmatter.title}
-        </h2>
-        <p className="text-sm select-none text-gray-800 opacity-75s pt-1 ml-3">
-          posted on {data.post.frontmatter.date}
-        </p>
-        <div className="p-3 text-sm sm:text-base text-gray-800">
-          <MDXRenderer>{data.post.body}</MDXRenderer>
-        </div>
-        {/* <PageMove  arrow={page_arrow}/> */}
+      <div className="flex justify-between my-16 relative">
+        <article className="prose sm:prose md:prose-lg max-w-none tracking-normal dark-transition">
+          <div className="select-none opacity-80 text-secondary text-sm mb-1">
+            posted on {mdx.frontmatter.date} - {mdx.timeToRead} minutes read
+          </div>
+          <h1 className="select-none">{mdx.frontmatter.title}</h1>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </article>
+        <aside className="h-screen top-0 max-w-xs sticky hidden lg:block ml-8 pt-16">
+          <nav>
+            <h2 className="text-accent text-lg tracking-extrawide mb-4">
+              Table Of Contents
+            </h2>
+            <TableContents contents={mdx.tableOfContents.items} />
+          </nav>
+        </aside>
       </div>
-    </Layout>
+    </ArticleLayout>
   )
 }
 

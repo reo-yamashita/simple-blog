@@ -1,0 +1,38 @@
+:root {
+  @apply light;
+}
+
+.dark {
+  --color-bg-primary: #1e2530;
+  --color-bg-secondary: #2b313d;
+  --color-bg-accent: #343c4b;
+  --color-text-primary: #f6fafd;
+  --color-text-secondary: #dce2eb;
+  --color-text-accent: #c3d9e0;
+  --color-text-little-accent: #9994e4;
+  --color-text-article: #b7c1cf;
+  --color-text-article-accent: #a3bae6;
+}
+
+.light {
+  --color-bg-primary: #fafafa;
+  --color-bg-secondary: #d8e7f7;
+  --color-bg-accent: #e0e0ff;
+  --color-text-primary: #2f3b50;
+  --color-text-secondary: #4a5568;
+  --color-text-accent: #3774b4;
+  --color-text-little-accent: #5a81ac;
+  --color-text-article: #404a5c;
+  --color-text-article-accent: #559fdb;
+}
+
+body {
+  transition: all 0.3s ease 0s;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  @apply antialiased;
+}
+
+.dark-transition {
+  transition: all 0.3s ease 0s;
+}

@@ -1,37 +1,3 @@
-:root {
-  @apply light;
-}
-
-.dark {
-  --color-bg-primary: #2d3644;
-  --color-bg-secondary: #2d3749;
-  --color-bg-accent: #363e44;
-  --color-text-primary: #f6fafd;
-  --color-text-secondary: #dce2eb;
-  --color-text-accent: #c3d9e0;
-}
-
-.light {
-  --color-bg-primary: #fafafa;
-  --color-bg-secondary: #f7fbff;
-  --color-bg-accent: #ebf5fc;
-  --color-text-primary: #2f3b50;
-  --color-text-secondary: #4a5568;
-  --color-text-accent: #275f79;
-}
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
-body {
-  transition: all 0.3s ease 0s;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  @apply antialiased;
-}
-
-.dark-transition {
-  transition: all 0.3s ease 0s;
-  @apply antialiased;
-}

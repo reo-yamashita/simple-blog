@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { Link } from "gatsby"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -14,35 +14,43 @@ const Header = () => {
     { name: "Article", link: "/article" },
   ]
 
+  const darkLight = ["dark", "light"]
+
+  const themeHandler = useCallback(
+    () =>
+      dispatch(
+        themeColorToggle(state[0] === "light" ? darkLight : darkLight.reverse())
+      ),
+    [state, dispatch, darkLight]
+  )
+
   return (
-    <header className="mx-auto max-w-screen-md md:max-w-screen-xl px-10 md:px-24">
+    <header className="mx-auto max-w-screen-md md:max-w-screen-xl px-8 md:px-16">
       <div className="flex items-center pt-16 pb-8">
-        <nav className="flex items-center flex-grow">
+        <nav className="flex items-center flex-grow text-secondary ">
           {header_list.map((item, index) => {
             return (
               <Link
+                activeClassName="text-article-accent"
+                className="px-4"
                 to={`${item.link}`}
                 key={index}
-                className="px-4"
                 aria-label="header_item"
+                partiallyActive={index ? true : false}
               >
-                <p className="font-normal text-base text-secondary  dark-transition">
-                  {item.name}
-                </p>
+                <p className="dark-transition">{item.name}</p>
               </Link>
             )
           })}
         </nav>
         <div
-          className={`cursor-pointer transition-colors ${
-            state === "light" ? "text-gray-500" : "text-blue-200"
-          }`}
           aria-hidden="true"
-          onClick={() => {
-            dispatch(themeColorToggle(state === "light" ? "dark" : "light"))
-          }}
+          className={`cursor-pointer transition-colors ${
+            state[0] === "light" ? "text-gray-500" : "text-blue-200"
+          }`}
+          onClick={themeHandler}
         >
-          <Brightness2Icon />
+          <Brightness2Icon fontSize="small" />
         </div>
       </div>
     </header>
