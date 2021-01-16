@@ -5,16 +5,16 @@ import MainLayout from "@layouts/main_layout"
 import Seo from "@components/Seo"
 import useWriter from "../hooks/useWriter"
 import useColored from "../hooks/useColored"
-import { useSelector } from "react-redux"
+//import { useSelector } from "react-redux"
 import BlogListParts from "@components/bloglist_parts"
 
 export default function Home() {
   const { writer, done } = useWriter("Near Closer")
   const colored_techs = useColored(["react", "vue", "tailwind"])
 
-  const theme = useSelector((state) => {
-    return state.themeReducer.themeColor[0]
-  })
+  // const theme = useSelector((state) => {
+  //   return state.themeReducer.themeColor[0]
+  // })
 
   const data = useStaticQuery(graphql`
     query {
@@ -51,22 +51,18 @@ export default function Home() {
     <>
       <MainLayout>
         <Seo />
-        <section className="pt-24 pb-8 md:pb-28">
+        <section className="pt-24 pb-8 md:pb-28 relative">
           <div className="max-w-3xl mx-auto">
             <div
-              className={`z-50 flex flex-col items-center justify-between sm:flex-row rounded-3xl opacity-80 dark:bg-gray-800 dark-transition ${
-                theme === "light" ? "shadow-xl" : "shadow-2xl"
-              }`}
+              className={`flex flex-col items-center justify-between sm:flex-row rounded-3x`}
             >
               <div
-                className={`select-none w-60 h-full overflow-hidden smd:mx-4 rounded-l-3xl  rounded-r-3xl md:rounded-r-sm ${
-                  theme === "light" ? "opacity-90" : "opacity-90"
-                }`}
+                className={`select-none w-60 h-full overflow-hidden smd:mx-4 rounded-full dark:bg-gray-500 dark-transition`}
               >
                 <Img
                   fluid={data.logo.childImageSharp.fluid}
                   alt="My logo"
-                  className="transition-transform transform hover:scale-110"
+                  className="transition-transform transform hover:scale-110  opacity-80"
                 />
               </div>
               <div className="pl-4 md:pl-8 pr-4 md:px-8 sm:text-left text-center mt-4 sm:mt-0">
@@ -75,8 +71,8 @@ export default function Home() {
                     Front end developer
                   </p>
                   <p
-                    className="font-semibold tracking-wider text-2xl md:text-4xl h-10 select-none 
-                 text-secondary dark-transition"
+                    className="font-semibold tracking-widest text-2xl md:text-4xl h-10 select-none 
+                 text-secondary dark-transition opacity-90"
                   >
                     {writer}
                   </p>
@@ -89,7 +85,7 @@ export default function Home() {
                   } transform transition duration-300`}
                 >
                   <div className="mb-3 max-w-md md:max-w-lg">
-                    <p className="font-medium text-sm md:text-base text-secondary dark-transition tracking-normal leading-6">
+                    <p className="align-middle opacity-80 font-medium text-sm md:text-base text-secondary dark-transition tracking-normal leading-6">
                       I really being into learning languages and frameworks like
                       React and Vue.
                     </p>
@@ -101,7 +97,8 @@ export default function Home() {
 
                       return (
                         <div
-                          className={` dark-transition ${tech_color} text-white px-4 py-2 text-xs tracking-wider rounded-2xl select-none leading-none`}
+                          className={`text-white px-4 py-2 text-xs tracking-wider rounded-2xl select-none leading-none
+                          dark-transition ${tech_color} shadow-md`}
                           key={tech.name}
                         >
                           {name[0].toUpperCase() + name.substring(1)}

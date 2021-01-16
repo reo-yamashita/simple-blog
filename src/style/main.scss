@@ -18,33 +18,23 @@
   background-color: #ececec !important;
 }
 
-.deco1 {
-  top: 1rem;
-  left: 4rem;
-  width: 0.7rem;
-  height: 0.7rem;
+.circles {
+  height: 15rem;
+  width: 15rem;
+  transform: rotateZ(-14deg);
 }
 
-.deco2 {
-  top: 8rem;
-  left: 6rem;
-  width: 0.7rem;
-  height: 0.7rem;
-}
-.deco3 {
-  top: 3rem;
-  right: 3rem;
-  width: 0.7rem;
-  height: 0.7rem;
+.circles1 {
+  height: 8rem;
+  width: 8rem;
+  transform: rotateZ(-10deg);
 }
 
-.deco4 {
-  top: 7rem;
-  right: 7rem;
-  width: 0.7rem;
-  height: 0.7rem;
+.circles2 {
+  height: 20rem;
+  width: 20rem;
+  transform: rotateZ(-10deg);
 }
-
 //  MDX code style
 .gatsby-highlight pre[class="language-css"]::before {
   content: "css";

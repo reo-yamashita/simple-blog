@@ -2,11 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { Provider } from "react-redux"
-//import { PersistGate } from "redux-persist/integration/react"
-import {
-  // persistor,
-  store,
-} from "@/store/createStore"
+import { PersistGate } from "redux-persist/integration/react"
+import { persistor, store } from "@/store/createStore"
 import Code from "@components/code"
 import { LoremIpsum } from "react-lorem-ipsum"
 
@@ -91,11 +88,11 @@ const OtherComponents = {
 const Root = ({ element }) => {
   return (
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      <MDXProvider components={{ ...OtherComponents, ...BasicComponents }}>
-        {element}
-      </MDXProvider>
-      {/* </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <MDXProvider components={{ ...OtherComponents, ...BasicComponents }}>
+          {element}
+        </MDXProvider>
+      </PersistGate>
     </Provider>
   )
 }

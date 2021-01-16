@@ -113,6 +113,8 @@ module.exports = {
   variants: {
     extend: {
       backgroundColor: ["active"],
+      opacity: ["hover", "dark"],
+      textColor: ["dark", "group-hover"],
     },
   },
   plugins: [require("@tailwindcss/typography")],
