@@ -6,7 +6,7 @@ export const useIntersection = (contents) => {
 
   const options = {
     root: null,
-    rootMargin: "0% 0% -70% 0%",
+    rootMargin: "0% 0% -60% 0%",
     threshold: 1,
   }
 

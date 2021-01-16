@@ -34,14 +34,16 @@ const Blog = ({ data: { mdx }, pageContext }) => {
           <h1 className="select-none">{mdx.frontmatter.title}</h1>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </article>
-        <aside className="h-screen top-0 max-w-xs sticky hidden lg:block ml-8 pt-16">
-          <nav>
-            <h2 className="text-accent text-lg tracking-extrawide mb-4">
-              Table Of Contents
-            </h2>
-            <TableContents contents={mdx.tableOfContents.items} />
-          </nav>
-        </aside>
+        {mdx.tableOfContents.items && (
+          <aside className="h-screen top-0 max-w-xs sticky hidden lg:block ml-8 pt-16">
+            <nav>
+              <h2 className="text-accent text-lg tracking-extrawide mb-4">
+                Table Of Contents
+              </h2>
+              <TableContents contents={mdx.tableOfContents.items} />
+            </nav>
+          </aside>
+        )}
       </div>
     </ArticleLayout>
   )

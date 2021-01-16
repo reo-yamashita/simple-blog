@@ -13,6 +13,7 @@ const initialState = { themeColor: getInitialTheme() }
 
 export const themeReducer = (state = initialState, action) => {
   if (action.type === "TOGGLE_THEMECOLOR") {
+    console.log(`Current Theme is ${action.themeColor[0]}`)
     return {
       ...state,
       themeColor: action.themeColor,

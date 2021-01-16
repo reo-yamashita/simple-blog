@@ -16,7 +16,7 @@ const BlogList_Parts = ({ node }) => {
         <h1 className="tracking-wide font-bold dark-transition opacity-80 text-2xl">
           {node.frontmatter.title}
         </h1>
-        <p className="text-base opacity-80 text-little mt-1">
+        <p className="text-base opacity-80 dark:text-gray-400 text-bluegray-600 font-medium mt-1">
           {node.frontmatter.description}
         </p>
       </Link>

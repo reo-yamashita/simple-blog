@@ -9,7 +9,7 @@ import { useSelector } from "react-redux"
 import BlogListParts from "@components/bloglist_parts"
 
 export default function Home() {
-  const { writer, done } = useWriter("Hi, I’m Near Closer.")
+  const { writer, done } = useWriter("Near Closer")
   const colored_techs = useColored(["react", "vue", "tailwind"])
 
   const theme = useSelector((state) => {
@@ -48,92 +48,101 @@ export default function Home() {
   `)
 
   return (
-    <MainLayout>
-      <Seo />
-      <section className="pt-16 pb-8 md:pb-28">
-        <div className="max-w-5xl mx-auto">
-          <div
-            className={`flex flex-col items-center justify-center sm:flex-row py-12 rounded-3xl opacity-90 dark:bg-gray-800 dark-transition ${
-              theme === "light" ? "" : "shadow-2xl"
-            }`}
-          >
-            <div className="select-none w-40 md:w-52 opacity-90 rounded-full overflow-hidden shadow-md md:mx-4">
-              <Img
-                fluid={data.logo.childImageSharp.fluid}
-                alt="My logo"
-                className="transition-transform transform hover:scale-110"
-              />
-            </div>
-            <div className="px-4 sm:px-1 md:ml-8 md:px-8 sm:text-left text-center mt-4 sm:mt-0">
-              <div className="mb-2">
-                <p className="tracking-widest italic text-sm opacity-70 select-none">
-                  Front end developer
-                </p>
-                <p
-                  className="font-semibold tracking-wide text-2xl md:text-4xl h-10 select-none 
-                 text-secondary dark-transition opacity-80"
-                >
-                  {writer}
-                </p>
-              </div>
+    <>
+      <MainLayout>
+        <Seo />
+        <section className="pt-24 pb-8 md:pb-28">
+          <div className="max-w-3xl mx-auto">
+            <div
+              className={`z-50 flex flex-col items-center justify-between sm:flex-row rounded-3xl opacity-80 dark:bg-gray-800 dark-transition ${
+                theme === "light" ? "shadow-xl" : "shadow-2xl"
+              }`}
+            >
               <div
-                className={`${
-                  done
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1/3"
-                } transform transition duration-300`}
+                className={`select-none w-60 h-full overflow-hidden smd:mx-4 rounded-l-3xl  rounded-r-3xl md:rounded-r-sm ${
+                  theme === "light" ? "opacity-90" : "opacity-90"
+                }`}
               >
-                <div className="mb-3 max-w-md md:max-w-lg">
-                  <p className="font-medium text-base md:text-lg text-secondary dark-transition tracking-normal leading-6">
-                    I really being into learning languages and frameworks like
-                    React and Vue.
+                <Img
+                  fluid={data.logo.childImageSharp.fluid}
+                  alt="My logo"
+                  className="transition-transform transform hover:scale-110"
+                />
+              </div>
+              <div className="pl-4 md:pl-8 pr-4 md:px-8 sm:text-left text-center mt-4 sm:mt-0">
+                <div className="mb-2">
+                  <p className="tracking-extrawide italic text-sm opacity-70 select-none">
+                    Front end developer
+                  </p>
+                  <p
+                    className="font-semibold tracking-wider text-2xl md:text-4xl h-10 select-none 
+                 text-secondary dark-transition"
+                  >
+                    {writer}
                   </p>
                 </div>
-                <div className="flex gap-2 justify-center sm:justify-start">
-                  {colored_techs.map((tech) => {
-                    const name = tech.name
-                    const tech_color = tech.colored.bg
+                <div
+                  className={`${
+                    done
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-1/3"
+                  } transform transition duration-300`}
+                >
+                  <div className="mb-3 max-w-md md:max-w-lg">
+                    <p className="font-medium text-sm md:text-base text-secondary dark-transition tracking-normal leading-6">
+                      I really being into learning languages and frameworks like
+                      React and Vue.
+                    </p>
+                  </div>
+                  <div className="flex gap-2 justify-center sm:justify-start mb-4 sm:mb-0">
+                    {colored_techs.map((tech) => {
+                      const name = tech.name
+                      const tech_color = tech.colored.bg
 
-                    return (
-                      <div
-                        className={` dark-transition ${tech_color} text-gray-50 px-4 py-0.5 text-xs md:text-sm tracking-wider rounded-xl select-none`}
-                        key={tech.name}
-                      >
-                        {name[0].toUpperCase() + name.substring(1)}
-                      </div>
-                    )
-                  })}
+                      return (
+                        <div
+                          className={` dark-transition ${tech_color} text-white px-4 py-2 text-xs tracking-wider rounded-2xl select-none leading-none`}
+                          key={tech.name}
+                        >
+                          {name[0].toUpperCase() + name.substring(1)}
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="pt-12 pb-28">
-        <div className="px-2 sm:flex sm:flex-row flex-col justify-center sm:space-y-0 space-y-24 sm:space-x-8">
-          <div>
-            <p className="my-8 ml-4 text-2xl tracking-widest text-accent select-none ">
-              LATEST
-            </p>
-            <div className="space-y-4">
-              {data.allPosts.edges.map(({ node }, index) => {
-                return <BlogListParts node={node} key={index} />
-              })}
+        <section className="pt-12 pb-28 relative">
+          <div className="px-2 sm:flex sm:flex-row flex-col justify-center sm:space-y-0 space-y-24 sm:space-x-8">
+            <div>
+              <p className="my-8 ml-4 text-2xl tracking-widest text-accent select-none ">
+                LATEST
+              </p>
+              <div className="space-y-4">
+                {data.allPosts.edges.map(({ node }, index) => {
+                  return <BlogListParts node={node} key={index} />
+                })}
+              </div>
+            </div>
+            <div>
+              <p className="my-8 pl-4 text-2xl tracking-widest text-accent select-none">
+                WORKS
+              </p>
+              <div className="space-y-4">
+                {data.allPosts.edges.map(({ node }, index) => {
+                  return <BlogListParts node={node} key={index} />
+                })}
+              </div>
             </div>
           </div>
-          <div>
-            <p className="my-8 pl-4 text-2xl tracking-widest text-accent select-none">
-              WORKS
-            </p>
-            <div className="space-y-4">
-              {data.allPosts.edges.map(({ node }, index) => {
-                return <BlogListParts node={node} key={index} />
-              })}
-            </div>
-          </div>
-        </div>
+        </section>
+      </MainLayout>
+      <section className="pt-12 pb-28 bg-lightblue-100 dark:bg-lightblue-900 dark-transition opacity-80">
+        <div className="px-2 sm:flex sm:flex-row flex-col justify-center sm:space-y-0 space-y-24 sm:space-x-8"></div>
       </section>
-    </MainLayout>
+    </>
   )
 }

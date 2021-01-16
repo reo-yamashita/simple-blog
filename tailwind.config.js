@@ -5,6 +5,22 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          "Inter",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
+      },
       colors: {
         warmgray: colors.warmGray,
         bluegray: colors.blueGray,
@@ -13,18 +29,6 @@ module.exports = {
         teal: colors.teal,
         lightblue: colors.lightBlue,
         rose: colors.rose,
-      },
-      fontFamily: {
-        sans: [
-          "Inter",
-          '"Segoe UI"',
-          '"Noto Sans"',
-          "sans-serif",
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-          '"Noto Color Emoji"',
-        ],
       },
       backgroundColor: {
         primary: "var(--color-bg-primary)",

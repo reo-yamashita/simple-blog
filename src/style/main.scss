@@ -18,6 +18,33 @@
   background-color: #ececec !important;
 }
 
+.deco1 {
+  top: 1rem;
+  left: 4rem;
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+.deco2 {
+  top: 8rem;
+  left: 6rem;
+  width: 0.7rem;
+  height: 0.7rem;
+}
+.deco3 {
+  top: 3rem;
+  right: 3rem;
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+.deco4 {
+  top: 7rem;
+  right: 7rem;
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
 //  MDX code style
 .gatsby-highlight pre[class="language-css"]::before {
   content: "css";

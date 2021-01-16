@@ -23,13 +23,15 @@ const ContentsList = ({ active, contents, depth = 0 }) => {
       {contents?.map((item) => {
         const depthStyle = depth_style(depth)
         const isActive =
-          item.url === `#${active}` ? "text-little" : "text-article"
+          item.url === `#${active}`
+            ? "dark:text-lightblue-200 text-lightblue-600"
+            : "text-article"
 
         return (
           <React.Fragment key={item.url}>
             <a
               href={item.url}
-              className={`block text-sm leading-relaxed ${isActive} ${depthStyle} mb-4`}
+              className={`block text-sm leading-relaxed ${isActive} ${depthStyle} mb-4 hover:text-lightblue-500 dark:hover:text-lightblue-200 dark-transition`}
             >
               {item.title}
             </a>

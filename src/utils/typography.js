@@ -7,6 +7,7 @@ const typography = new Typography({
       styles: ["300", "400", "500", "600", "700", "800", "900"],
     },
   ],
+  bodyFontFamily: ["Inter"],
 })
 
 export default typography
