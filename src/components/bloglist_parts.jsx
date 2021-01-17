@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 const BlogList_Parts = ({ node }) => {
   return (
-    <div className="group hover:opacity-80 dark:hover:bg-gray-700 dark:hover:opacity-80 p-4 dark-transition cursor-pointer">
+    <div className="group hover:opacity-80 dark:hover:shadow-2xl dark:hover:opacity-80 p-4 dark-transition cursor-pointer">
       <p className="text-sm select-none text-article opacity-70 tracking-wide">
         {node.frontmatter.date}
         {node.timeToRead > 0 && ` - ${node.timeToRead} minutes read`}

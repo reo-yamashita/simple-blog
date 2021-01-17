@@ -14,6 +14,7 @@ const composeEnhancers =
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["themeReducer"],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

@@ -115,6 +115,7 @@ module.exports = {
       backgroundColor: ["active"],
       opacity: ["hover", "dark"],
       textColor: ["dark", "group-hover"],
+      boxShadow: ["dark"],
     },
   },
   plugins: [require("@tailwindcss/typography")],

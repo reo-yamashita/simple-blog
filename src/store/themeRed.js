@@ -9,17 +9,28 @@ const getInitialTheme = () => {
   return ["light", "dark"]
 }
 
-const initialState = { themeColor: getInitialTheme() }
+const initialState = {
+  themeColor: getInitialTheme(),
+  isFirstRendered: false,
+}
 
 export const themeReducer = (state = initialState, action) => {
-  if (action.type === "TOGGLE_THEMECOLOR") {
-    console.log(`Current Theme is ${action.themeColor[0]}`)
-    return {
-      ...state,
-      themeColor: action.themeColor,
-    }
+  switch (action.type) {
+    case "TOGGLE_THEMECOLOR":
+      console.log(`Current Theme is ${action.themeColor[0]} !!`)
+      return {
+        ...state,
+        themeColor: action.themeColor,
+      }
+    case "TOGGLE_FIRSTRENDER":
+      console.log(`FirstRender is Done...`)
+      return {
+        ...state,
+        isFirstRendered: action.isFirstRender,
+      }
+    default:
+      return state
   }
-  return state
 }
 
 export const themeColorToggle = (theme) => {
@@ -31,5 +42,12 @@ export const themeColorToggle = (theme) => {
   return {
     type: "TOGGLE_THEMECOLOR",
     themeColor: theme,
+  }
+}
+
+export const firstrenderToggle = (isFirstRender) => {
+  return {
+    type: "TOGGLE_FIRSTRENDER",
+    isFirstRender,
   }
 }

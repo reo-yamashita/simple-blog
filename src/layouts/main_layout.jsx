@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
   const isLight = useSelector(
     (state) => state.themeReducer.themeColor[0] === "light"
   )
-  console.log(isLight)
+
   const data = useStaticQuery(graphql`
     query {
       site {

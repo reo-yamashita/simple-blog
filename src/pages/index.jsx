@@ -137,9 +137,9 @@ export default function Home() {
           </div>
         </section>
       </MainLayout>
-      <section className="pt-12 pb-28 bg-lightblue-100 dark:bg-lightblue-900 dark-transition opacity-80">
+      {/* <section className="pt-12 pb-28 bg-lightblue-100 dark:bg-lightblue-900 dark-transition opacity-80">
         <div className="px-2 sm:flex sm:flex-row flex-col justify-center sm:space-y-0 space-y-24 sm:space-x-8"></div>
-      </section>
+      </section> */}
     </>
   )
 }

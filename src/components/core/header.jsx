@@ -1,19 +1,22 @@
-import React, { useCallback, useEffect, useRef } from "react"
+import React, { useCallback, useEffect } from "react"
 import { Link } from "gatsby"
 import { useDispatch, useSelector } from "react-redux"
 
 import Brightness2Icon from "@material-ui/icons/Brightness2"
-import { themeColorToggle } from "@/store/themeRed"
+import { themeColorToggle, firstrenderToggle } from "@/store/themeRed"
+
+const header_list = [
+  { name: "Home", link: "/" },
+  { name: "Article", link: "/article" },
+]
 
 const Header = () => {
   const dispatch = useDispatch()
-  const isFirstRender = useRef(true)
-  const state = useSelector((state) => state.themeReducer.themeColor)
 
-  const header_list = [
-    { name: "Home", link: "/" },
-    { name: "Article", link: "/article" },
-  ]
+  const state = useSelector((state) => state.themeReducer.themeColor)
+  const isFirstRender = useSelector(
+    (state) => state.themeReducer.isFirstRendered
+  )
 
   const darkLight = ["dark", "light"]
 
@@ -26,15 +29,13 @@ const Header = () => {
   )
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      if (state[0] === "dark") {
-        console.log("reo")
-        dispatch(themeColorToggle(darkLight))
-      }
-      isFirstRender.current = false
+    if (!isFirstRender && state[0] === "dark") {
+      console.log("first render or first toggle dark")
+      dispatch(themeColorToggle(darkLight))
+      dispatch(firstrenderToggle(true))
     }
-  }, [darkLight, dispatch, state])
-  console.log("reo")
+  }, [dispatch, state, isFirstRender, darkLight])
+
   return (
     <header className="mx-auto max-w-screen-md md:max-w-screen-xl px-8 md:px-16 relative z-0">
       <div
