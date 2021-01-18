@@ -5,16 +5,11 @@ import MainLayout from "@layouts/main_layout"
 import Seo from "@components/Seo"
 import useWriter from "../hooks/useWriter"
 import useColored from "../hooks/useColored"
-//import { useSelector } from "react-redux"
 import BlogListParts from "@components/bloglist_parts"
 
 export default function Home() {
   const { writer, done } = useWriter("Near Closer")
   const colored_techs = useColored(["react", "vue", "tailwind"])
-
-  // const theme = useSelector((state) => {
-  //   return state.themeReducer.themeColor[0]
-  // })
 
   const data = useStaticQuery(graphql`
     query {
@@ -115,7 +110,7 @@ export default function Home() {
         <section className="pt-12 pb-28 relative">
           <div className="px-2 sm:flex sm:flex-row flex-col justify-center sm:space-y-0 space-y-24 sm:space-x-8">
             <div>
-              <p className="my-8 ml-4 text-2xl tracking-widest text-accent select-none ">
+              <p className="my-8 ml-4 text-2xl tracking-widest select-none dark:text-lightblue-300 text-lightblue-600 opacity-80">
                 LATEST
               </p>
               <div className="space-y-4">
@@ -125,7 +120,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <p className="my-8 pl-4 text-2xl tracking-widest text-accent select-none">
+              <p className="my-8 pl-4 text-2xl tracking-widest select-none dark:text-teal-300 dark:opacity-80 text-teal-600 opacity-90">
                 WORKS
               </p>
               <div className="space-y-4">
@@ -136,10 +131,66 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* <section className="pt-28 pb-8 md:pb-28 px-8">
+          <div className="flex">
+            <div className="flex-1">
+              <div className="-mt-8 mb-12 text-5xl dark:text-lightblue-300 font-bold tracking-wide text-lightblue-500 opacity-70 dark:text-opacity-50">
+                Skills
+              </div>
+              <div className="max-w-lg">
+                <p className="leading-7">
+                  JavaScript / HTML / CSS (SASS) の基礎的な部分は扱えます。
+                  分からないことがあった時や、上手くコードが動かないときの調査力(検索力)とグリットは人一倍自信があります。
+                  このブログはGatsbyJSのテンプレートテーマを使用せずに、デザイン、スタイリングから構築、デプロイまですべて
+                  なーこぉ が作りました。
+                </p>
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="hidden md:flex justify-center">
+                <div className="grid grid-rows-3 grid-flow-col gap-y-4 sm:gap-8 text-opacity-80 hover:opacity-95 p-8 shadow-2xl rounded-2xl transition-opacity select-none dark:bg-bluegray-900 dark:bg-opacity-50">
+                  <div className="space-y-2 px-4">
+                    <p>HTML5</p>
+                    <p>CSS3</p>
+                    <p>JavaScript</p>
+                  </div>
+                  <div className="space-y-2 px-4">
+                    <span className="text-blue-800 dark:text-blue-200">
+                      <p>React</p>
+                    </span>
+                    <p>Vue</p>
+                    <p>Git</p>
+                  </div>
+                  <div className="space-y-2 px-4">
+                    <span className="text-lightblue-800  dark:text-teal-200">
+                      <p>Tailwindcss</p>
+                    </span>
+                    <p>Material-ui</p>
+                    <p>Vuetify</p>
+                  </div>
+                  <div className="space-y-2 px-4">
+                    <span className="text-indigo-800  dark:text-red-200">
+                      <p>GatsbyJS</p>
+                    </span>
+                    <p>NuxtJS</p>
+                    <p>NextJS</p>
+                  </div>
+                  <div className="space-y-2 px-4">
+                    <p>Firebase</p>
+                    <p>Firestore</p>
+                    <p>Firestorage</p>
+                  </div>
+                  <div className="space-y-2 px-4">
+                    <p>Svelte</p>
+                    <p>Sapper</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> */}
       </MainLayout>
-      {/* <section className="pt-12 pb-28 bg-lightblue-100 dark:bg-lightblue-900 dark-transition opacity-80">
-        <div className="px-2 sm:flex sm:flex-row flex-col justify-center sm:space-y-0 space-y-24 sm:space-x-8"></div>
-      </section> */}
     </>
   )
 }
