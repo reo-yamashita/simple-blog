@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import GitHubIcon from "@material-ui/icons/GitHub"
-import TwitterIcon from "@material-ui/icons/Twitter"
+//import TwitterIcon from "@material-ui/icons/Twitter"
 
 const Social = () => {
   const data = useStaticQuery(graphql`
@@ -20,8 +20,8 @@ const Social = () => {
   const { social } = data.site.siteMetadata
 
   return (
-    <div className="flex items-center space-x-3 px-3">
-      <div className="opacity-70 hover:">
+    <div className="flex items-center space-x-4 px-3">
+      {/* <div className="opacity-70">
         {social.twitter && (
           <a
             href={`https://twitter.com/${social.twitter}`}
@@ -30,10 +30,10 @@ const Social = () => {
             aria-label="Twitter"
             className="dark:hover:text-blue-300"
           >
-            <TwitterIcon />
+            <TwitterIcon fontSize="large" />
           </a>
         )}
-      </div>
+      </div> */}
       <div className="opacity-70">
         {social.github && (
           <a
@@ -43,7 +43,7 @@ const Social = () => {
             aria-label="GitHub"
             className="dark:hover:text-teal-300"
           >
-            <GitHubIcon />
+            <GitHubIcon fontSize="large" />
           </a>
         )}
       </div>

@@ -8,6 +8,7 @@ import { themeColorToggle, firstrenderToggle } from "@/store/themeRed"
 const header_list = [
   { name: "Home", link: "/" },
   { name: "Article", link: "/article" },
+  { name: "Contact", link: "/contact" },
 ]
 
 const Header = () => {
