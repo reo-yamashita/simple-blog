@@ -111,6 +111,7 @@ const Contact = () => {
           )}
           {!submitSuccess ? (
             <form
+              method="post"
               data-netlify-honeypot="bot-field"
               data-netlify="true"
               name="contact"
