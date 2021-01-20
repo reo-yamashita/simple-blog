@@ -117,7 +117,6 @@ const Contact = () => {
               data-netlify-honeypot="bot-field"
               onSubmit={formik.handleSubmit}
             >
-              {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
               <input type="hidden" name="form-name" value="contact" />
               <MuiThemeProvider
                 theme={theme === "light" ? theme_light : theme_dark}
