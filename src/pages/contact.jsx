@@ -111,11 +111,10 @@ const Contact = () => {
           )}
           {!submitSuccess ? (
             <form
-              method="post"
               data-netlify-honeypot="bot-field"
               data-netlify="true"
               name="contact"
-              // onSubmit={formik.handleSubmit}
+              onSubmit={formik.handleSubmit}
             >
               <input type="hidden" name="form-name" value="contact" />
               <MuiThemeProvider
