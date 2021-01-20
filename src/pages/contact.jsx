@@ -1,24 +1,61 @@
-import React, { useState } from "react"
+import React from "react"
 import MainLayout from "@layouts/main_layout"
 import Seo from "@components/Seo"
 
 import { useFormik } from "formik"
 import * as yup from "yup"
-import Button from "@material-ui/core/Button"
+
 import TextField from "@material-ui/core/TextField"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 
-import { Redirect } from "react-router-dom"
+import { onSave, onSumbit } from "@/store/contactRed"
+import { useDispatch, useSelector } from "react-redux"
 
-const theme = createMuiTheme({
+const theme_dark = createMuiTheme({
+  palette: { error: { main: "#F397A6" } },
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        color: "white",
+        "&$focused": {
+          color: "#E7E7E7",
+        },
+      },
+    },
+    MuiInput: {
+      root: {
+        color: "#DFEEF5",
+      },
+      underline: {
+        "&$error": {
+          color: "white",
+        },
+        "&$focused": {
+          borderBottom: "0px solid #D2E9FE",
+        },
+        "&&&&:before": {
+          borderBottom: "1px solid #D2E9FE",
+        },
+        "&&&&:after": {
+          borderBottom: "1px solid #91ACF9",
+        },
+      },
+    },
+  },
+})
+
+const theme_light = createMuiTheme({
   overrides: {
     MuiInput: {
       underline: {
-        "&&&&:after": {
-          borderBottom: "1px solid rgba(0, 0, 0, 0.42)",
+        "&$focused": {
+          borderBottom: "0",
         },
-        "&&&&:hover:before": {
-          borderBottom: "1px solid rgba(0, 0, 0, 0.42)",
+        "&&&&:before": {
+          borderBottom: "1px solid #CCD0D7",
+        },
+        "&&&&:after": {
+          borderBottom: "1px solid #414347",
         },
       },
     },
@@ -26,7 +63,10 @@ const theme = createMuiTheme({
 })
 
 const validationSchema = yup.object({
-  name: yup.string("Enter your name").required("Password is required"),
+  name: yup
+    .string("Enter your name")
+    .max(30, "Name should be of minimum 30 characters length")
+    .required("Name is required"),
   email: yup
     .string("Enter your email")
     .email("Enter a valid email")
@@ -34,88 +74,119 @@ const validationSchema = yup.object({
 })
 
 const Contact = () => {
-  const [status, setStatus] = useState(false)
+  const dispatch = useDispatch()
+
+  const details = useSelector((state) => state.contactReducer.details)
+  const saveSuccess = useSelector((state) => state.contactReducer.isSaved)
+  const submitSuccess = useSelector((state) => state.contactReducer.isSubmitted)
+
+  const theme = useSelector((state) => state.themeReducer.themeColor[0])
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: "",
-      email: "",
-      content: "",
+      name: details.name,
+      email: details.email,
+      content: details.content,
     },
     validationSchema: validationSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      setStatus(true)
       resetForm()
+      dispatch(onSumbit())
     },
   })
 
-  if (status) return <Redirect to="/" />
   return (
     <MainLayout>
       <Seo />
       <div className="pt-8 pb-12">
-        <div className="max-w-screen-md mx-auto px-8 py-4 bg-white ">
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            onSubmit={formik.handleSubmit}
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <MuiThemeProvider theme={theme}>
-              <div className="mb-4">
-                <TextField
-                  fullWidth
-                  id="name"
-                  name="name"
-                  label="Name"
-                  value={formik.values.name}
+        <div className="max-w-screen-md mx-auto px-8 py-4 bg-white dark:bg-bluegray-800 text-white relative dark-transition">
+          {saveSuccess && (
+            <div
+              className="absolute right-0 top-0 rounded-sm px-6 py-3 shadow-md bg-opacity-80 text-gray-700
+            dark:bg-bluegray-700 dark:text-gray-100"
+            >
+              <p>Saved</p>
+            </div>
+          )}
+          {!submitSuccess ? (
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={formik.handleSubmit}
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <MuiThemeProvider
+                theme={theme === "light" ? theme_light : theme_dark}
+              >
+                <div className="mb-8">
+                  <TextField
+                    fullWidth
+                    id="name"
+                    name="name"
+                    label="Name"
+                    value={formik.values.name}
+                    onChange={formik.handleChange}
+                    error={formik.touched.name && Boolean(formik.errors.name)}
+                    helperText={formik.touched.name && formik.errors.name}
+                  />
+                </div>
+                <div className="mb-8">
+                  <TextField
+                    fullWidth
+                    placeholder="near_closer@closer.com"
+                    id="email"
+                    name="email"
+                    label="Email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                  />
+                </div>
+                <textarea
+                  className="outline-none focus:outline-none px-3 py-2 resize-none w-full h-64 border-2 border-gray-700 border-opacity-20 dark:bg-bluegray-600 dark-transition text-bluegray-800 dark:text-bluegray-100"
+                  required
+                  as="textarea"
+                  label="Content"
+                  name="content"
+                  id="content"
+                  value={formik.values.content}
                   onChange={formik.handleChange}
-                  error={formik.touched.name && Boolean(formik.errors.name)}
-                  helperText={formik.touched.name && formik.errors.name}
                 />
-              </div>
-              <div className="mb-6">
-                <TextField
-                  className="hover:"
-                  fullWidth
-                  placeholder="near_closer@closer.com"
-                  id="email"
-                  name="email"
-                  label="Email"
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
-                  error={formik.touched.email && Boolean(formik.errors.email)}
-                  helperText={formik.touched.email && formik.errors.email}
-                />
-              </div>
-              <textarea
-                className="focus:outline-none px-2 py-1 resize-none w-full h-48 border-2 border-gray-700 border-opacity-20"
-                required
-                as="textarea"
-                label="Content"
-                name="content"
-                id="content"
-                value={formik.values.content}
-                onChange={formik.handleChange}
-              />
-              <div className="mt-4 text-center">
-                {status === "SUCCESS" ? (
-                  <p>Thanks!</p>
-                ) : (
-                  <Button
-                    variant="outlined"
+                <div className="mt-4 flex justify-around">
+                  <button
                     type="submit"
-                    className="select-none  focus:outline-none"
+                    variant="outlined"
+                    disabled={saveSuccess}
+                    className="transition-colors select-none focus:outline-none px-6 py-2 
+                    shadow-md text-gray-800 opacity-80 hover:opacity-60 dark:text-gray-50 dark:shadow-md dark:hover:opacity-75 dark:bg-bluegray-700 dark-transition"
                   >
                     Submit
-                  </Button>
-                )}
-              </div>
-            </MuiThemeProvider>
-          </form>
+                  </button>
+
+                  <button
+                    type="button"
+                    variant="outlined"
+                    disabled={saveSuccess}
+                    className="transition-colors select-none focus:outline-none px-6 py-2 
+                    shadow-md text-gray-800 opacity-80 hover:opacity-60 dark:text-gray-50 dark:shadow-md dark:hover:opacity-75 dark:bg-bluegray-700 dark-transition"
+                    onClick={() => dispatch(onSave(formik.values))}
+                  >
+                    Save
+                  </button>
+                </div>
+              </MuiThemeProvider>
+            </form>
+          ) : (
+            <div className="flex justify-center items-center h-56 text-lg">
+              <p className="text-primary tracking-wider">
+                Thanks for sending !!
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </MainLayout>

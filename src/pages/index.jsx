@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+
 import MainLayout from "@layouts/main_layout"
 import Seo from "@components/Seo"
 import useWriter from "../hooks/useWriter"
@@ -49,7 +50,7 @@ export default function Home() {
         <section className="pt-24 pb-8 md:pb-28 relative">
           <div className="max-w-3xl mx-auto">
             <div
-              className={`flex flex-col items-center justify-between sm:flex-row rounded-3x`}
+              className={`flex flex-col items-center justify-between sm:flex-row rounded-3xl`}
             >
               <div
                 className={`select-none w-60 h-full overflow-hidden smd:mx-4 rounded-full dark:bg-gray-500 dark-transition`}
