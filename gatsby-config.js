@@ -29,7 +29,7 @@ module.exports = {
         icon: `static/near_closer_.png`,
       },
     },
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     {
