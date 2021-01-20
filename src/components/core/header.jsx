@@ -8,12 +8,14 @@ import { themeColorToggle, firstrenderToggle } from "@/store/themeRed"
 const header_list = [
   { name: "Home", link: "/" },
   { name: "Article", link: "/article" },
+  // { name: "Contact", link: "/contact" },
 ]
 
 const Header = () => {
   const dispatch = useDispatch()
 
   const state = useSelector((state) => state.themeReducer.themeColor)
+
   const isFirstRender = useSelector(
     (state) => state.themeReducer.isFirstRendered
   )
