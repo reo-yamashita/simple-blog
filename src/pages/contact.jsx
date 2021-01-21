@@ -11,6 +11,8 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 import { onSave, onSumbit } from "@/store/contactRed"
 import { useDispatch, useSelector } from "react-redux"
 
+import Axios from "axios"
+
 const theme_dark = createMuiTheme({
   palette: { error: { main: "#F397A6" } },
   overrides: {
@@ -115,11 +117,10 @@ const Contact = () => {
             >
               <form
                 name="contact"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
+                action="https://getform.io/f/3d5276b4-4c80-4596-803b-ebda0111e5b4"
+                method="POST"
                 onSubmit={formik.handleSubmit}
               >
-                <input type="hidden" name="form-name" value="contact" />
                 <div className="mb-8">
                   <TextField
                     fullWidth
