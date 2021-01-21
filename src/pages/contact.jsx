@@ -110,15 +110,16 @@ const Contact = () => {
             </div>
           )}
           {!submitSuccess ? (
-            <form
-              name="contact"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-              onSubmit={formik.handleSubmit}
+            <MuiThemeProvider
+              theme={theme === "light" ? theme_light : theme_dark}
             >
-              <MuiThemeProvider
-                theme={theme === "light" ? theme_light : theme_dark}
+              <form
+                name="contact"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={formik.handleSubmit}
               >
+                <input type="hidden" name="form-name" value="contact" />
                 <div className="mb-8">
                   <TextField
                     fullWidth
@@ -176,8 +177,8 @@ const Contact = () => {
                     Save
                   </button>
                 </div>
-              </MuiThemeProvider>
-            </form>
+              </form>
+            </MuiThemeProvider>
           ) : (
             <div className="flex justify-center items-center h-56 text-lg">
               <p className="text-primary tracking-wider">
