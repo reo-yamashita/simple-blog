@@ -94,7 +94,6 @@ const Contact = () => {
     validationSchema: validationSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
       resetForm()
-      dispatch(onSumbit())
     },
   })
 
@@ -109,6 +108,7 @@ const Contact = () => {
     })
       .then((r) => {
         dispatch(onSumbit())
+        formik.handleSubmit()
       })
       .catch((r) => {
         console.log(r)
@@ -137,7 +137,6 @@ const Contact = () => {
                 action="https://getform.io/f/3d5276b4-4c80-4596-803b-ebda0111e5b4"
                 method="POST"
                 onSubmit={handleOnSubmit}
-                // onSubmit={formik.handleSubmit}
               >
                 <div className="mb-8">
                   <TextField
