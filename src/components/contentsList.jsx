@@ -31,8 +31,7 @@ const ContentsList = ({ active, contents, depth = 0 }) => {
           <React.Fragment key={item.url}>
             <a
               href={item.url}
-              className={`block text-sm leading-relaxed ${isActive} ${depthStyle} mb-4 hover:text-lightblue-500 dark:hover:text-lightblue-200 dark-transition`}
-            >
+              className={`block text-sm leading-relaxed ${isActive} ${depthStyle} mb-4 hover:text-lightblue-500 dark:hover:text-lightblue-200 dark-transition`}>
               {item.title}
             </a>
             {item.items && (

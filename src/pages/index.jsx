@@ -4,16 +4,28 @@ import Img from "gatsby-image"
 
 import MainLayout from "@layouts/main_layout"
 import Seo from "@components/Seo"
-import useWriter from "../hooks/useWriter"
+
 import useColored from "../hooks/useColored"
 import BlogListParts from "@components/bloglist_parts"
 
 export default function Home() {
-  const { writer, done } = useWriter("Near Closer")
-  const colored_techs = useColored(["react", "vue", "tailwind"])
+  const colored_techs = useColored([
+    "react",
+    "vue",
+    "tailwind",
+    "GitHub",
+    "Contact",
+  ])
 
   const data = useStaticQuery(graphql`
     query {
+      github: site {
+        siteMetadata {
+          social {
+            github
+          }
+        }
+      }
       logo: file(relativePath: { eq: "near_closer_.png" }) {
         childImageSharp {
           fluid(quality: 50, maxWidth: 120) {
@@ -50,11 +62,9 @@ export default function Home() {
         <section className="pt-24 pb-8 md:pb-28 relative">
           <div className="max-w-3xl mx-auto">
             <div
-              className={`flex flex-col items-center justify-between sm:flex-row rounded-3xl`}
-            >
+              className={`flex flex-col items-center justify-between sm:flex-row rounded-3xl`}>
               <div
-                className={`select-none w-60 h-full overflow-hidden smd:mx-4 rounded-full dark:bg-gray-500 dark-transition`}
-              >
+                className={`select-none w-60 h-full overflow-hidden smd:mx-4 rounded-full dark:bg-gray-500 dark-transition`}>
                 <Img
                   fluid={data.logo.childImageSharp.fluid}
                   alt="My logo"
@@ -62,26 +72,19 @@ export default function Home() {
                 />
               </div>
               <div className="pl-4 md:pl-8 pr-4 md:px-8 sm:text-left text-center mt-4 sm:mt-0">
-                <div className="mb-2">
+                <div className="mb-3">
                   <p className="tracking-extrawide italic text-sm opacity-70 select-none">
                     Front end developer
                   </p>
                   <p
                     className="font-semibold tracking-widest text-2xl md:text-4xl h-10 select-none 
-                 text-secondary dark-transition opacity-90"
-                  >
-                    {writer}
+                 text-secondary dark-transition opacity-90">
+                    {`Near Closer`}
                   </p>
                 </div>
-                <div
-                  className={`${
-                    done
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-1/3"
-                  } transform transition duration-300`}
-                >
-                  <div className="mb-3 max-w-md md:max-w-lg">
-                    <p className="align-middle opacity-80 font-medium text-sm md:text-base text-secondary dark-transition tracking-normal leading-6">
+                <div>
+                  <div className="mb-4 max-w-md md:max-w-lg">
+                    <p className="align-middle opacity-80 font-medium text-sm md:text-base text-secondary dark-transition tracking-wide leading-6">
                       I really being into learning languages and frameworks like
                       React and Vue.
                     </p>
@@ -95,9 +98,27 @@ export default function Home() {
                         <div
                           className={`text-white px-4 py-2 text-xs tracking-wider rounded-2xl select-none leading-none
                           dark-transition ${tech_color} shadow-md`}
-                          key={tech.name}
-                        >
-                          {name[0].toUpperCase() + name.substring(1)}
+                          key={tech.name}>
+                          {name === "GitHub" && (
+                            <a
+                              href={`https://github.com/${data.github.siteMetadata.social.github}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="GitHub">
+                              {name[0].toUpperCase() + name.substring(1)}
+                            </a>
+                          )}
+                          {name === "Contact" && (
+                            <a href="mailto:honohina0215@gmail.com">
+                              <p className="hover:bg-opacity-90 transition-opacity">
+                                {name[0].toUpperCase() + name.substring(1)}
+                              </p>
+                            </a>
+                          )}
+
+                          {name !== "Contact" &&
+                            name !== "GitHub" &&
+                            `${name[0].toUpperCase() + name.substring(1)}`}
                         </div>
                       )
                     })}
@@ -132,65 +153,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* <section className="pt-28 pb-8 md:pb-28 px-8">
-          <div className="flex">
-            <div className="flex-1">
-              <div className="-mt-8 mb-12 text-5xl dark:text-lightblue-300 font-bold tracking-wide text-lightblue-500 opacity-70 dark:text-opacity-50">
-                Skills
-              </div>
-              <div className="max-w-lg">
-                <p className="leading-7">
-                  JavaScript / HTML / CSS (SASS) の基礎的な部分は扱えます。
-                  分からないことがあった時や、上手くコードが動かないときの調査力(検索力)とグリットは人一倍自信があります。
-                  このブログはGatsbyJSのテンプレートテーマを使用せずに、デザイン、スタイリングから構築、デプロイまですべて
-                  なーこぉ が作りました。
-                </p>
-              </div>
-            </div>
-            <div className="flex-1">
-              <div className="hidden md:flex justify-center">
-                <div className="grid grid-rows-3 grid-flow-col gap-y-4 sm:gap-8 text-opacity-80 hover:opacity-95 p-8 shadow-2xl rounded-2xl transition-opacity select-none dark:bg-bluegray-900 dark:bg-opacity-50">
-                  <div className="space-y-2 px-4">
-                    <p>HTML5</p>
-                    <p>CSS3</p>
-                    <p>JavaScript</p>
-                  </div>
-                  <div className="space-y-2 px-4">
-                    <span className="text-blue-800 dark:text-blue-200">
-                      <p>React</p>
-                    </span>
-                    <p>Vue</p>
-                    <p>Git</p>
-                  </div>
-                  <div className="space-y-2 px-4">
-                    <span className="text-lightblue-800  dark:text-teal-200">
-                      <p>Tailwindcss</p>
-                    </span>
-                    <p>Material-ui</p>
-                    <p>Vuetify</p>
-                  </div>
-                  <div className="space-y-2 px-4">
-                    <span className="text-indigo-800  dark:text-red-200">
-                      <p>GatsbyJS</p>
-                    </span>
-                    <p>NuxtJS</p>
-                    <p>NextJS</p>
-                  </div>
-                  <div className="space-y-2 px-4">
-                    <p>Firebase</p>
-                    <p>Firestore</p>
-                    <p>Firestorage</p>
-                  </div>
-                  <div className="space-y-2 px-4">
-                    <p>Svelte</p>
-                    <p>Sapper</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
       </MainLayout>
     </>
   )

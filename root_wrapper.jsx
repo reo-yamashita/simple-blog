@@ -11,6 +11,7 @@ const getListId = (props) => {
   const name = props.children.toLowerCase()
   return name.replace(/\s/g, "-")
 }
+
 const BasicComponents = {
   pre: ({ children }) => {
     const child = children.props
@@ -31,8 +32,7 @@ const BasicComponents = {
     <h1
       style={{ marginBottom: "1.5rem" }}
       id={`${getListId(props)}`}
-      {...props}
-    >
+      {...props}>
       {props.children}
     </h1>
   ),
@@ -40,8 +40,7 @@ const BasicComponents = {
     <h2
       style={{ marginBottom: "1.4rem" }}
       id={`${getListId(props)}`}
-      {...props}
-    >
+      {...props}>
       {props.children}
     </h2>
   ),
@@ -49,8 +48,7 @@ const BasicComponents = {
     <h3
       style={{ marginBottom: "1.3rem" }}
       id={`${getListId(props)}`}
-      {...props}
-    >
+      {...props}>
       {props.children}
     </h3>
   ),
@@ -58,8 +56,7 @@ const BasicComponents = {
     <h4
       style={{ marginBottom: "1.25rem" }}
       id={`${getListId(props)}`}
-      {...props}
-    >
+      {...props}>
       {props.children}
     </h4>
   ),

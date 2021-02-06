@@ -3,7 +3,10 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const { paginate } = require("gatsby-awesome-pagination")
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField, createRedirect } = actions
+
+  createRedirect({ fromPath: "/404", toPath: "/", isPermanent: true })
+
   if (node.internal.type === "Mdx") {
     const slug = createFilePath({ node, getNode })
 

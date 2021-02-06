@@ -60,6 +60,7 @@ module.exports = {
         },
         DEFAULT: {
           css: {
+            pre: false,
             color: "var(--color-text-article)",
             a: {
               color: "var(--color-text-article)",

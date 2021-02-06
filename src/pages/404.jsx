@@ -1,7 +1,7 @@
 import React from "react"
 
-const Futures = () => {
-  return <div>nothing</div>
+const NotFound = () => {
+  return <div></div>
 }
 
-export default Futures
+export default NotFound

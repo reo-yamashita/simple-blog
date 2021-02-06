@@ -35,52 +35,6 @@
   width: 20rem;
   transform: rotateZ(-10deg);
 }
-//  MDX code style
-.gatsby-highlight pre[class="language-css"]::before {
-  content: "css";
-  background: rgb(206, 245, 162);
-}
-.gatsby-highlight pre[class="language-jsx"]::before {
-  content: "jsx";
-  background: rgb(97, 218, 251);
-}
-.gatsby-highlight pre[class="language-js"]::before {
-  content: "js";
-  background: rgb(204, 213, 255);
-}
-.gatsby-highlight pre[class*="language-shell"]::before {
-  content: "shell";
-  background: #d2d1d3ab;
-}
-.gatsby-highlight pre[class="language-graphql"]::before {
-  content: "graphQL";
-  background: rgb(230, 99, 149);
-  color: white;
-}
-.gatsby-highlight pre[class="language-bash"]::before {
-  content: "bash";
-  background: #d2d1d3ab;
-}
-.gatsby-highlight pre[class="language-html"]::before {
-  content: "html";
-  background: #baf1ffab;
-}
-.gatsby-highlight pre[class="language-svelte"]::before {
-  content: "svelte";
-  color: white;
-  background: #ff4a2aab;
-}
-
-.gatsby-highlight pre[class*="language-"]::before {
-  text-transform: uppercase;
-  letter-spacing: 0.025rem;
-  font-size: 0.8rem;
-  font-weight: lighter;
-  position: absolute;
-  left: 2rem;
-  border-radius: 0 0 4px 4px;
-  padding: 0 0.6rem;
-}
 
 code {
   font-family: "Fira Mono", monospace;

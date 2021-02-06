@@ -81,8 +81,7 @@ const Seo = ({ description, title, author, image, keywords }) => {
                     content: metaKeywords.join(`, `),
                   }
                 : []
-            )}
-          >
+            )}>
             <html lang="en" />
           </Helmet>
         )

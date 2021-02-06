@@ -80,37 +80,29 @@ const Code = ({ codeString, language, title, highlight, light, svelte }) => {
       theme={github}
       Prism={Prism}
       code={codeString}
-      language={language}
-    >
-      {({ className, tokens, getLineProps, getTokenProps }) => {
+      language={language}>
+      {({ tokens, getLineProps, getTokenProps }) => {
         return (
           <div className="mb-3 code-surface-spread ">
-            <div className="gatsby-title">
-              {title && (
-                <div className="px-5 py-3 leading-none bg-gray-100 rounded-md border-b border-gray-200">
-                  <p className="text-indigo-900 text-sm px-3 select-none leading-none">
-                    {title}
-                  </p>
+            <div
+              className={`gatsby-highlight bg-gray-100 dark:bg-gray-200 dark:opacity-80 relative shadow-sm rounded-md`}>
+              {(title || language) && (
+                <div className="text-gray-900 px-3 py-1 select-none inline-block mb-2 top-2 left-2 absolute rounded-lg bg-gray-200 text-sm">
+                  {title ? title : language}
                 </div>
               )}
-            </div>
-            <div
-              className={`gatsby-highlight bg-gray-100 relative shadow-sm rounded-md`}
-            >
               <pre
-                className={svelte ? `language-svelte` : `language-${language}`}
-              >
-                <div className="px-0 pt-10 pb-6 overflow-auto scrolls">
+                className={svelte ? `language-svelte` : `language-${language}`}>
+                <div className="px-0 pt-8 pb-6 overflow-auto scrolls">
                   <button
                     onClick={handleClick}
                     className={`mt-1 mx-4 focus:outline-none focus absolute top-0 right-0 text-gray-300`}
-                    disabled={value[1]}
-                  >
-                    <p className="rounded-lg hover:bg-gray-100 hover:text-gray-600 font-sans text-sm py-1 px-2 transition duration-300 ease-in-out">
+                    disabled={value[1]}>
+                    <div className="rounded-lg  hover:text-gray-600 font-sans text-sm py-1 px-2 transition duration-300 ease-in-out">
                       {value[0]}
-                    </p>
+                    </div>
                   </button>
-                  <div className="text-sm text-blue-900 px-6 float-left block min-w-full">
+                  <div className="text-sm text-blue-900 px-2 float-left block min-w-full">
                     {tokens.map((line, index) => {
                       const lineProps = getLineProps({ line, key: index })
 
@@ -128,6 +120,7 @@ const Code = ({ codeString, language, title, highlight, light, svelte }) => {
                               token,
                               key: key,
                             })
+                            console.log(tokenProps)
                             return <span {...tokenProps} />
                           })}
                         </div>

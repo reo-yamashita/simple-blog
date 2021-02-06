@@ -48,14 +48,12 @@ const Pagination = ({ data, pageContext }) => {
               return (
                 <li
                   className={` rounded-md text-sm transition-colors`}
-                  key={index}
-                >
+                  key={index}>
                   <Link
                     to={`${pathPrefix}${page === 1 ? "" : "/" + page}`}
                     activeClassName="opacity-60"
                     className="px-1 justify-center inline-flex items-center border border-gray-500 border-opacity-70 rounded-md  pagination_box dark:hover:bg-bg-accent"
-                    aria-label="PageList"
-                  >
+                    aria-label="PageList">
                     <span className="text-primary">{page}</span>
                   </Link>
                 </li>

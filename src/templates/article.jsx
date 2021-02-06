@@ -26,7 +26,7 @@ const Blog = ({ data: { mdx }, pageContext }) => {
   return (
     <ArticleLayout>
       <Seo title={"blog"} description={"article"} author={"Near String"} />
-      <div className="flex justify-between my-16 relative">
+      <div className="flex justify-between my-16">
         <article className="prose sm:prose md:prose-lg max-w-none tracking-normal dark-transition">
           <div className="select-none opacity-80 text-secondary text-sm mb-1">
             posted on {mdx.frontmatter.date} - {mdx.timeToRead} minutes read

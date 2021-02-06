@@ -28,6 +28,7 @@ const useColored = (categories) => {
     { bg: "bg-gray-400", text: "text-gray-400", hover: "hover:bg-gray-300" },
     { bg: "bg-red-400", text: "text-red-400", hover: "hover:bg-red-300" },
     { bg: "bg-rose-400", text: "text-rose-400", hover: "hover:bg-rose-300" },
+    { bg: "bg-rose-400", text: "text-rose-400", hover: "hover:bg-rose-300" },
   ]
 
   const Colors = (category) => {
@@ -45,6 +46,8 @@ const useColored = (categories) => {
       return color_name[6]
     } else if (category === "rollup") {
       return color_name[7]
+    } else if (category === "Contact") {
+      return color_name[8]
     } else {
       return color_name[5]
     }

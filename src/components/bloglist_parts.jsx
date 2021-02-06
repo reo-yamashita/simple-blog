@@ -11,12 +11,10 @@ const BlogList_Parts = ({ node }) => {
       <Link
         to={`/article${node.fields.slug}`}
         className="opacity-80"
-        aria-label="Article"
-      >
+        aria-label="Article">
         <h1
           className="tracking-wide font-bold dark-transition opacity-80 dark:opacity-95 text-2xl group-hover:text-lightblue-800
-        dark:group-hover:text-white"
-        >
+        dark:group-hover:text-white">
           {node.frontmatter.title}
         </h1>
         <p className="text-base opacity-80 dark:text-gray-300 text-bluegray-500 font-medium mt-1">
